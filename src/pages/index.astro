@@ -28,12 +28,6 @@ const kitItems = [
   { name: 'Day 7 チャレンジパウチ', desc: '最終日のための封印された一品。開けるのは、7日目まで我慢。' },
 ];
 
-const voices = [
-  { attr: '50代・男性', text: '「減塩」と言われずに始めたのが良かった。気づいたら、コンビニの惣菜がしょっぱく感じるようになっていた。' },
-  { attr: '40代・男性', text: 'ゲームの攻略みたいで面白い。妻より自分のほうが夢中になっていたと思う。' },
-  { attr: '60代・男性', text: '出汁の味がこんなに複雑だとは知らなかった。7日目のパウチには本当に驚いた。' },
-];
-
 const channels = [
   { name: '健康保険組合', desc: '特定保健指導の補完プログラムとして。対象者の行動変容を「楽しさ」から支援します。' },
   { name: '企業・福利厚生', desc: '健康経営の施策として。参加率の上がらない健康施策に、規格外の体験を。' },
@@ -144,25 +138,25 @@ const channels = [
           </div>
         ))}
       </div>
-      <div class="text-center mt-12">
+      <p class="text-xs text-center mt-8 text-charcoal/70">※ キット内容は開発中のため、変更になる場合があります。</p>
+      <div class="text-center mt-6">
         <a href="/kit" class="text-brown font-medium border-b border-gold pb-1 hover:opacity-70 transition-opacity">キットの全容を見る →</a>
       </div>
     </div>
   </section>
 
-  <!-- 3-7. 体験者の声 -->
+  <!-- 3-7. 体験者の声（初期モニター実施中 → 順次掲載） -->
   <section class="bg-beige py-20 md:py-28">
-    <div class="mx-auto max-w-5xl px-4 sm:px-6">
-      <p class="en-sub text-sm text-center">Voices</p>
-      <h2 class="text-2xl md:text-3xl font-bold text-center mt-3">体験者の声</h2>
-      <p class="text-xs text-center mt-3 text-charcoal/70">※ 現在は社内モニターの声を掲載しています</p>
-      <div class="mt-12 grid gap-6 md:grid-cols-3">
-        {voices.map((v) => (
-          <figure class="bg-white rounded-xl p-7 card-hover border border-gold/20">
-            <blockquote class="text-sm leading-relaxed">{v.text}</blockquote>
-            <figcaption class="mt-5 pt-4 gold-line text-xs text-charcoal/70">{v.attr}</figcaption>
-          </figure>
-        ))}
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 text-center">
+      <p class="en-sub text-sm">Voices</p>
+      <h2 class="text-2xl md:text-3xl font-bold mt-3">体験者の声</h2>
+      <div class="mt-10 bg-white rounded-xl p-10 border border-gold/20">
+        <p class="text-charcoal leading-relaxed">
+          現在、初期モニタープログラムを実施中です。<br class="hidden sm:block" />
+          体験者のリアルな声は、順次こちらに掲載していきます。
+        </p>
+        <p class="mt-6 font-serif-jp text-brown">あなたの舌で、最初の冒険を確かめてみませんか。</p>
+        <a href="/contact" class="inline-block mt-8 bg-brown text-white px-8 py-3.5 rounded-full hover:opacity-90 transition-opacity">体験モニターに登録する</a>
       </div>
     </div>
   </section>

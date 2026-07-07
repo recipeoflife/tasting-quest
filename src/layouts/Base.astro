@@ -1,0 +1,141 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+
+// TODO: Google Analytics の測定IDを取得後、G-XXXXXXXXXX を差し替えてください
+const GA_ID = 'G-XXXXXXXXXX';
+
+const navItems = [
+  { href: '/program', label: '7日間の体験' },
+  { href: '/kit', label: 'キット' },
+  { href: '/corporate', label: '法人・健保向け' },
+  { href: '/events', label: 'イベント' },
+  { href: '/about', label: 'About' },
+];
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <!-- OGP -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content="Tasting Quest（味覚の冒険）" />
+    <meta property="og:image" content={new URL('/ogp.png', Astro.site)} />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Google Analytics（測定ID設定後に有効になります） -->
+    <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}></script>
+    <script is:inline define:vars={{ GA_ID }}>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', GA_ID);
+    </script>
+
+    <!-- 構造化データ（Organization） -->
+    <script type="application/ld+json" is:inline set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Organization',
+      name: 'Recipe of Life',
+      url: 'https://quest.recipeoflife.jp',
+      description: '認知心理学を活かした食の体験設計。体験型減塩プログラム「Tasting Quest（味覚の冒険）」を運営。',
+    })} />
+  </head>
+  <body>
+    <!-- グローバルナビゲーション（スクロール固定） -->
+    <header class="sticky top-0 z-50 bg-beige/95 backdrop-blur border-b border-gold/40">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 flex items-center justify-between h-16">
+        <a href="/" class="flex items-baseline gap-2">
+          <span class="font-serif-jp text-lg sm:text-xl font-bold text-brown">Tasting Quest</span>
+          <span class="en-sub text-xs hidden sm:inline">the adventure of taste</span>
+        </a>
+
+        <nav class="hidden lg:flex items-center gap-6">
+          {navItems.map((item) => (
+            <a href={item.href} class="text-sm text-charcoal hover:text-brown transition-colors">{item.label}</a>
+          ))}
+          <a
+            href="/contact"
+            class="ml-2 inline-block bg-brown text-white text-sm px-5 py-2.5 rounded-full hover:opacity-90 transition-opacity"
+          >資料請求・お問い合わせ</a>
+        </nav>
+
+        <!-- モバイルメニュー -->
+        <button id="menu-btn" class="lg:hidden p-2 text-brown" aria-label="メニューを開く" aria-expanded="false">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 7h16M4 12h16M4 17h16" />
+          </svg>
+        </button>
+      </div>
+      <nav id="mobile-menu" class="hidden lg:hidden border-t border-gold/40 bg-beige px-6 py-4">
+        {navItems.map((item) => (
+          <a href={item.href} class="block py-2.5 text-charcoal">{item.label}</a>
+        ))}
+        <a href="/contact" class="mt-3 block bg-brown text-white text-center px-5 py-3 rounded-full">資料請求・お問い合わせ</a>
+      </nav>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <!-- フッター -->
+    <footer class="bg-brown text-white/80">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 py-12">
+        <div class="flex flex-col md:flex-row md:justify-between gap-8">
+          <div>
+            <p class="font-serif-jp text-xl text-white">Tasting Quest</p>
+            <p class="en-sub text-sm mt-1">the adventure of taste — 7 days</p>
+            <p class="text-sm mt-4">運営：Recipe of Life</p>
+          </div>
+          <nav class="grid grid-cols-2 gap-x-10 gap-y-2 text-sm">
+            {navItems.map((item) => (
+              <a href={item.href} class="hover:text-white transition-colors">{item.label}</a>
+            ))}
+            <a href="/contact" class="hover:text-white transition-colors">お問い合わせ</a>
+            <a href="/privacy" class="hover:text-white transition-colors">プライバシーポリシー</a>
+            <a href="/legal" class="hover:text-white transition-colors">特定商取引法に基づく表記</a>
+          </nav>
+        </div>
+        <div class="gold-line mt-10 pt-6 text-xs text-white/60">
+          &copy; {new Date().getFullYear()} Recipe of Life. All rights reserved.
+        </div>
+      </div>
+    </footer>
+
+    <script is:inline>
+      const btn = document.getElementById('menu-btn');
+      const menu = document.getElementById('mobile-menu');
+      btn?.addEventListener('click', () => {
+        const open = menu.classList.toggle('hidden') === false;
+        btn.setAttribute('aria-expanded', String(open));
+      });
+    </script>
+  </body>
+</html>

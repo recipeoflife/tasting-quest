@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+/* ===== ROL ブランドカラー / フォント（CSS Variables 管理） ===== */
+@theme {
+  --color-beige: #F5F2E9;    /* 背景・全体の基盤 */
+  --color-gold: #B4A785;     /* タイトル・ライン・強調 */
+  --color-charcoal: #63676B; /* 本文・文字色 */
+  --color-brown: #2A1F1A;    /* 見出し・強調ブロック背景 */
+
+  --font-serif-jp: "Noto Serif JP", "Yu Mincho", "YuMincho", serif;
+  --font-sans-jp: "Noto Sans JP", "Yu Gothic", "YuGothic", sans-serif;
+  --font-en: "Cormorant Garamond", Georgia, serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans-jp);
+  font-size: 16px;
+  color: var(--color-charcoal);
+  background-color: var(--color-beige);
+  line-height: 1.9;
+  letter-spacing: 0.02em;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-serif-jp);
+  color: var(--color-brown);
+  line-height: 1.5;
+}
+
+/* 英語サブテキスト（Cross-Modal / Destroy / Return 等） */
+.en-sub {
+  font-family: var(--font-en);
+  font-style: italic;
+  color: var(--color-gold);
+  letter-spacing: 0.12em;
+}
+
+/* ゴールドの細い区切りライン */
+.gold-line {
+  border-top: 1px solid var(--color-gold);
+}
+
+/* カード hover：shadow のみ（色変化は最小限） */
+.card-hover {
+  transition: box-shadow 0.3s ease;
+}
+.card-hover:hover {
+  box-shadow: 0 8px 30px rgba(42, 31, 26, 0.12);
+}

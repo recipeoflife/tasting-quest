@@ -1,0 +1,238 @@
+---
+import Base from '../layouts/Base.astro';
+
+const pains = [
+  '健診で引っかかったけど、減塩食ってどうせまずいでしょ',
+  '減塩醤油を買ったけど、結局いつもの調味料を足してしまう',
+  '測る・買いに行く・作る。全部面倒で続かなかった',
+  'でも正直、この先の健康は気になっている',
+];
+
+const principles = [
+  { en: 'Destroy', ja: '先入観の破壊', desc: '「減塩＝まずい」という思い込みを、驚きの体験で壊すことから始まります。' },
+  { en: 'Rewrite', ja: '基準値の書き換え', desc: '7日間の設計されたステップで、舌が「おいしい」と感じる基準そのものを更新します。' },
+  { en: 'Return', ja: '驚きによる定着', desc: '最終日、以前の味に戻ったときの違和感が、新しい味覚を確かなものにします。' },
+];
+
+const timeline = [
+  { days: 'Day 1-2', theme: '脳を騙す', desc: '香りと見た目が味を変える。クロスモーダルな仕掛けで、味覚の可塑性を体感します。' },
+  { days: 'Day 3-4', theme: '引き算と足し算', desc: '塩を引き、香り・食感・温度を足す。おいしさの方程式を組み替えます。' },
+  { days: 'Day 5-6', theme: '出汁に目覚める', desc: 'うま味の解像度が上がると、塩に頼らないおいしさが立ち上がります。' },
+  { days: 'Day 7', theme: '最終試練', desc: '以前の「ふつうの味」に戻る最終チャレンジ。あなたの舌はもう、戻れない。' },
+];
+
+const kitItems = [
+  { name: 'モナカ型お椀', desc: '割って、注ぐ。出汁との出会いを儀式に変える、食べられる器。' },
+  { name: '香りスプレー', desc: 'ひと吹きで料理の印象が変わる。嗅覚が味覚を書き換える体験装置。' },
+  { name: 'クエストシート', desc: '7日間の冒険の地図。毎日のミッションと記録がここに。' },
+  { name: 'Day 7 チャレンジパウチ', desc: '最終日のための封印された一品。開けるのは、7日目まで我慢。' },
+];
+
+const voices = [
+  { attr: '50代・男性', text: '「減塩」と言われずに始めたのが良かった。気づいたら、コンビニの惣菜がしょっぱく感じるようになっていた。' },
+  { attr: '40代・男性', text: 'ゲームの攻略みたいで面白い。妻より自分のほうが夢中になっていたと思う。' },
+  { attr: '60代・男性', text: '出汁の味がこんなに複雑だとは知らなかった。7日目のパウチには本当に驚いた。' },
+];
+
+const channels = [
+  { name: '健康保険組合', desc: '特定保健指導の補完プログラムとして。対象者の行動変容を「楽しさ」から支援します。' },
+  { name: '企業・福利厚生', desc: '健康経営の施策として。参加率の上がらない健康施策に、規格外の体験を。' },
+  { name: '行政・補助金', desc: '地域の健康増進事業として。補助金スキームでの導入実績づくりをご一緒に。' },
+];
+---
+
+<Base
+  title="Tasting Quest（味覚の冒険）| あなたの味覚のポテンシャルを引き出す、7日間。"
+  description="体験型減塩プログラム「Tasting Quest」。知識ではなく体験で、舌のOSを書き換える7日間。健康保険組合・企業・行政の特定保健指導の補完プログラムとして導入いただけます。"
+>
+  <!-- 3-2. Hero -->
+  <section class="relative bg-brown text-white overflow-hidden">
+    <div class="absolute inset-0 opacity-40 bg-[url('/images/hero.jpg')] bg-cover bg-center" aria-hidden="true"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-brown/70 via-brown/50 to-brown/80" aria-hidden="true"></div>
+    <div class="relative mx-auto max-w-6xl px-4 sm:px-6 py-28 md:py-40 text-center">
+      <p class="en-sub text-sm md:text-base mb-6">Tasting Quest — the adventure of taste</p>
+      <h1 class="font-serif-jp text-3xl md:text-5xl font-bold !text-white leading-relaxed">
+        あなたの味覚のポテンシャルを<br class="hidden md:block" />引き出す、7日間。
+      </h1>
+      <p class="mt-8 text-white/85 md:text-lg max-w-2xl mx-auto">
+        知識ではなく体験で、舌のOSを書き換えるプログラム。<br class="hidden md:block" />
+        我慢も、勉強も、要りません。
+      </p>
+      <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/program" class="inline-block bg-gold text-brown font-medium px-8 py-3.5 rounded-full hover:opacity-90 transition-opacity">7日間の体験を見る</a>
+        <a href="/corporate" class="inline-block border border-white/70 text-white px-8 py-3.5 rounded-full hover:bg-white/10 transition-colors">法人・健保の方はこちら</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3-3. インサイト（問題提起） -->
+  <section class="bg-beige py-20 md:py-28">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6">
+      <p class="en-sub text-sm text-center">Insight</p>
+      <h2 class="text-2xl md:text-3xl font-bold text-center mt-3">こんな経験、ありませんか。</h2>
+      <div class="mt-12 grid gap-5 sm:grid-cols-2">
+        {pains.map((p) => (
+          <div class="bg-white rounded-xl p-6 card-hover border border-gold/20">
+            <p class="text-charcoal">「{p}」</p>
+          </div>
+        ))}
+      </div>
+      <p class="mt-12 text-center font-serif-jp text-lg md:text-xl text-brown leading-relaxed">
+        それは、意志力の問題ではありません。<br />
+        <span class="font-bold">おいしさの感じ方を変えれば、我慢は要らない。</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- 3-4. コンセプト -->
+  <section class="bg-white py-20 md:py-28">
+    <div class="mx-auto max-w-5xl px-4 sm:px-6">
+      <p class="en-sub text-sm text-center">Concept</p>
+      <h2 class="text-2xl md:text-3xl font-bold text-center mt-3">
+        減塩を「学ぶ」のではなく、<br class="sm:hidden" />舌のOSを「書き換える」。
+      </h2>
+      <div class="mt-14 grid gap-6 md:grid-cols-3">
+        {principles.map((p) => (
+          <div class="bg-beige rounded-xl p-8 text-center card-hover">
+            <p class="en-sub text-2xl">{p.en}</p>
+            <h3 class="text-lg font-bold mt-2">{p.ja}</h3>
+            <p class="text-sm mt-4 text-left">{p.desc}</p>
+          </div>
+        ))}
+      </div>
+      <div class="gold-line mt-14 pt-10 max-w-3xl mx-auto text-center">
+        <p class="text-charcoal leading-relaxed">
+          ワインを深く学んだ舌が、安いワインに戻れなくなるのと同じ構造。<br class="hidden md:block" />
+          一度上がった味覚の解像度は、もう元には戻りません。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3-5. 7日間の体験ストーリー（要約） -->
+  <section class="bg-beige py-20 md:py-28">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6">
+      <p class="en-sub text-sm text-center">7 Days Journey</p>
+      <h2 class="text-2xl md:text-3xl font-bold text-center mt-3">7日間の体験ストーリー</h2>
+      <ol class="mt-14 relative border-l border-gold/60 ml-3 space-y-10">
+        {timeline.map((t) => (
+          <li class="pl-8 relative">
+            <span class="absolute -left-[7px] top-2 w-3.5 h-3.5 rounded-full bg-gold" aria-hidden="true"></span>
+            <p class="en-sub text-sm">{t.days}</p>
+            <h3 class="text-lg font-bold mt-1">{t.theme}</h3>
+            <p class="text-sm mt-2">{t.desc}</p>
+          </li>
+        ))}
+      </ol>
+      <div class="text-center mt-12">
+        <a href="/program" class="text-brown font-medium border-b border-gold pb-1 hover:opacity-70 transition-opacity">詳しく見る →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3-6. キット紹介（要約） -->
+  <section class="bg-white py-20 md:py-28">
+    <div class="mx-auto max-w-5xl px-4 sm:px-6">
+      <p class="en-sub text-sm text-center">The Kit</p>
+      <h2 class="text-2xl md:text-3xl font-bold text-center mt-3">冒険の道具たち</h2>
+      <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {kitItems.map((k) => (
+          <div class="bg-beige rounded-xl p-6 card-hover">
+            <div class="aspect-square rounded-lg bg-white border border-gold/30 mb-5 flex items-center justify-center text-gold text-xs">Photo</div>
+            <h3 class="font-bold">{k.name}</h3>
+            <p class="text-sm mt-2">{k.desc}</p>
+          </div>
+        ))}
+      </div>
+      <div class="text-center mt-12">
+        <a href="/kit" class="text-brown font-medium border-b border-gold pb-1 hover:opacity-70 transition-opacity">キットの全容を見る →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3-7. 体験者の声 -->
+  <section class="bg-beige py-20 md:py-28">
+    <div class="mx-auto max-w-5xl px-4 sm:px-6">
+      <p class="en-sub text-sm text-center">Voices</p>
+      <h2 class="text-2xl md:text-3xl font-bold text-center mt-3">体験者の声</h2>
+      <p class="text-xs text-center mt-3 text-charcoal/70">※ 現在は社内モニターの声を掲載しています</p>
+      <div class="mt-12 grid gap-6 md:grid-cols-3">
+        {voices.map((v) => (
+          <figure class="bg-white rounded-xl p-7 card-hover border border-gold/20">
+            <blockquote class="text-sm leading-relaxed">{v.text}</blockquote>
+            <figcaption class="mt-5 pt-4 gold-line text-xs text-charcoal/70">{v.attr}</figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 3-8. 法人・健保向け導入ポイント -->
+  <section class="bg-brown text-white py-20 md:py-28">
+    <div class="mx-auto max-w-5xl px-4 sm:px-6">
+      <p class="en-sub text-sm text-center">For Organizations</p>
+      <h2 class="text-2xl md:text-3xl font-bold !text-white text-center mt-3">
+        特定保健指導の補完プログラムとして<br class="sm:hidden" />採用いただけます
+      </h2>
+      <div class="mt-14 grid gap-6 md:grid-cols-3">
+        {channels.map((c) => (
+          <div class="bg-white/5 border border-gold/40 rounded-xl p-7">
+            <h3 class="font-bold !text-white text-lg font-serif-jp">{c.name}</h3>
+            <p class="text-sm mt-3 text-white/80">{c.desc}</p>
+          </div>
+        ))}
+      </div>
+      <div class="text-center mt-12">
+        <a href="/corporate" class="inline-block bg-gold text-brown font-medium px-8 py-3.5 rounded-full hover:opacity-90 transition-opacity">導入の詳細を見る →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3-9. イベント情報 -->
+  <section class="bg-white py-20 md:py-28">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 text-center">
+      <p class="en-sub text-sm">Events</p>
+      <h2 class="text-2xl md:text-3xl font-bold mt-3">イベント情報</h2>
+      <div class="mt-10 bg-beige rounded-xl p-10 border border-gold/20">
+        <p class="text-charcoal">体験イベント・ワークショップの情報は準備中です。<br />開催が決まり次第、こちらでお知らせします。</p>
+        <a href="/events" class="inline-block mt-6 text-brown font-medium border-b border-gold pb-1 hover:opacity-70 transition-opacity">イベント一覧を見る →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3-10. About（要約） -->
+  <section class="bg-beige py-20 md:py-28">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 text-center">
+      <p class="en-sub text-sm">About</p>
+      <h2 class="text-2xl md:text-3xl font-bold mt-3">Recipe of Life について</h2>
+      <p class="mt-8 max-w-2xl mx-auto leading-relaxed">
+        飲食店開業支援・食品メーカー向け企画室を手がける、食の体験設計ファーム。<br />
+        認知心理学 × 食体験設計を専門領域に、「行動が変わる」食の体験をデザインしています。
+      </p>
+      <div class="mt-8 flex items-center justify-center gap-4">
+        <div class="w-16 h-16 rounded-full bg-white border border-gold/40 flex items-center justify-center text-gold text-xs">Photo</div>
+        <div class="text-left text-sm">
+          <p class="font-bold text-brown">代表</p>
+          <p class="text-charcoal/80">食の体験設計デザイナー</p>
+        </div>
+      </div>
+      <a href="/about" class="inline-block mt-8 text-brown font-medium border-b border-gold pb-1 hover:opacity-70 transition-opacity">About を読む →</a>
+    </div>
+  </section>
+
+  <!-- 3-11. 資料請求 CTA -->
+  <section class="bg-white py-20 md:py-28">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 text-center">
+      <p class="en-sub text-sm">Download</p>
+      <h2 class="text-2xl md:text-3xl font-bold mt-3">法人向け資料を無料でダウンロード</h2>
+      <p class="mt-6 text-charcoal">
+        導入スキーム・費用・プログラム詳細をまとめた資料をご用意しています。<br />
+        体験モニターへのご登録も、お問い合わせフォームから受け付けています。
+      </p>
+      <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/contact" class="inline-block bg-brown text-white px-8 py-3.5 rounded-full hover:opacity-90 transition-opacity">資料請求する</a>
+        <a href="/contact" class="inline-block border border-brown text-brown px-8 py-3.5 rounded-full hover:bg-beige transition-colors">体験モニターに登録する</a>
+      </div>
+    </div>
+  </section>
+</Base>

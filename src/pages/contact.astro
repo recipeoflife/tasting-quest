@@ -1,0 +1,99 @@
+---
+import Base from '../layouts/Base.astro';
+
+// TODO: Formspree でフォームを作成し、YOUR_FORM_ID を差し替えてください
+// https://formspree.io/ で無料アカウント作成 → New Form → エンドポイントIDをコピー
+// 自動返信メールは Formspree の Settings > Autoresponder で設定できます
+const FORM_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
+
+const types = ['資料請求', '法人導入相談', '体験モニター', 'その他'];
+---
+
+<Base
+  title="お問い合わせ | Tasting Quest（味覚の冒険）"
+  description="Tasting Quest（味覚の冒険）への資料請求・法人導入のご相談・体験モニターのご登録はこちらから。"
+>
+  <section class="bg-beige py-16 md:py-24">
+    <div class="mx-auto max-w-2xl px-4 sm:px-6">
+      <p class="en-sub text-sm text-center">Contact</p>
+      <h1 class="text-3xl md:text-4xl font-bold text-center mt-3">お問い合わせ</h1>
+      <p class="mt-6 text-center text-charcoal">
+        資料請求・法人導入のご相談・体験モニターのご登録は、<br class="hidden sm:block" />
+        以下のフォームからお気軽にお問い合わせください。
+      </p>
+
+      <form
+        action={FORM_ENDPOINT}
+        method="POST"
+        class="mt-12 bg-white rounded-2xl p-6 sm:p-10 border border-gold/30 space-y-6"
+      >
+        <div>
+          <label for="name" class="block text-sm font-medium text-brown">お名前 <span class="text-gold">*</span></label>
+          <input
+            id="name" type="text" name="name" required autocomplete="name"
+            class="mt-2 w-full rounded-lg border border-gold/40 bg-beige/40 px-4 py-3 focus:outline-none focus:border-gold"
+            placeholder="山田 太郎"
+          />
+        </div>
+
+        <div>
+          <label for="company" class="block text-sm font-medium text-brown">所属・会社名</label>
+          <input
+            id="company" type="text" name="company" autocomplete="organization"
+            class="mt-2 w-full rounded-lg border border-gold/40 bg-beige/40 px-4 py-3 focus:outline-none focus:border-gold"
+            placeholder="〇〇健康保険組合 / 株式会社〇〇"
+          />
+        </div>
+
+        <div>
+          <label for="email" class="block text-sm font-medium text-brown">メールアドレス <span class="text-gold">*</span></label>
+          <input
+            id="email" type="email" name="email" required autocomplete="email"
+            class="mt-2 w-full rounded-lg border border-gold/40 bg-beige/40 px-4 py-3 focus:outline-none focus:border-gold"
+            placeholder="you@example.com"
+          />
+        </div>
+
+        <div>
+          <label for="type" class="block text-sm font-medium text-brown">お問い合わせ種別 <span class="text-gold">*</span></label>
+          <select
+            id="type" name="type" required
+            class="mt-2 w-full rounded-lg border border-gold/40 bg-beige/40 px-4 py-3 focus:outline-none focus:border-gold"
+          >
+            <option value="">選択してください</option>
+            {types.map((t) => <option value={t}>{t}</option>)}
+          </select>
+        </div>
+
+        <div>
+          <label for="message" class="block text-sm font-medium text-brown">本文 <span class="text-gold">*</span></label>
+          <textarea
+            id="message" name="message" rows="6" required
+            class="mt-2 w-full rounded-lg border border-gold/40 bg-beige/40 px-4 py-3 focus:outline-none focus:border-gold"
+            placeholder="ご質問・ご相談内容をご記入ください"></textarea>
+        </div>
+
+        <label class="flex items-start gap-3 text-sm">
+          <input type="checkbox" name="privacy" required class="mt-1 accent-[#B4A785]" />
+          <span>
+            <a href="/privacy" class="text-brown underline decoration-gold" target="_blank">プライバシーポリシー</a>
+            に同意する <span class="text-gold">*</span>
+          </span>
+        </label>
+
+        <!-- Formspree: 件名とスパム対策 -->
+        <input type="hidden" name="_subject" value="【Tasting Quest】サイトからのお問い合わせ" />
+        <input type="text" name="_gotcha" class="hidden" tabindex="-1" autocomplete="off" />
+
+        <button
+          type="submit"
+          class="w-full bg-brown text-white font-medium py-4 rounded-full hover:opacity-90 transition-opacity"
+        >送信する</button>
+
+        <p class="text-xs text-charcoal/70 text-center">
+          送信後、ご入力のメールアドレス宛に自動返信メールをお送りします。
+        </p>
+      </form>
+    </div>
+  </section>
+</Base>

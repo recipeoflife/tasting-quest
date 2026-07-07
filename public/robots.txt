@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://quest.recipeoflife.jp/sitemap-index.xml

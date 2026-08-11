@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>【ご意見募集】美味しい減塩と、食の楽しみに関する意識調査</title>
+<meta name="description" content="健康のための減塩と、食べる楽しさ。食と健康に関するアンケート調査にご協力ください。回答は約2分。株式会社レシピオブライフによる研究・開発プロジェクト。">
+
+<!-- ========== OGP / SNSシェア用 ========== -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Recipe of Life">
+<meta property="og:title" content="会社の健康診断に引っかかったあなたへ｜食と健康のアンケート調査">
+<meta property="og:description" content="減塩や日々の食事管理について、リアルな声を聞かせてください。回答は約2分。株式会社レシピオブライフによる研究・開発プロジェクト。">
+<meta property="og:url" content="https://quest.recipeoflife.jp/salt-survey01/">
+<meta property="og:image" content="https://quest.recipeoflife.jp/salt-survey01/images/ogp.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="会社の健康診断に引っかかったあなたへ｜食と健康のアンケート調査">
+<meta name="twitter:description" content="減塩や日々の食事管理について、リアルな声を聞かせてください。回答は約2分。">
+<meta name="twitter:image" content="https://quest.recipeoflife.jp/salt-survey01/images/ogp.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Serif+JP:wght@200;300;400;500&family=Noto+Sans+JP:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1c1c1c;
+    --body:#8a8a8a;
+    --white:#ffffff;
+    --blue:#e7ede4;         /* 淡いセージグリーン（食・健康の落ち着き） */
+    --blue-2:#eef2ea;       /* さらに淡いグリーン */
+    --gray-blk:#efece6;     /* 淡いウォームグレー */
+    --line:#e6e6e6;
+    --accent:#5a6b52;       /* 深い緑（減塩・自然のアクセント） */
+    --serif-en:'Playfair Display', serif;
+    --serif-jp:'Noto Serif JP', serif;
+    --sans-jp:'Noto Sans JP', sans-serif;
+    --radius:20px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--white);
+    color:var(--ink);
+    font-family:var(--sans-jp);
+    font-weight:300;
+    line-height:2;
+    letter-spacing:.04em;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{display:block;width:100%;height:100%;object-fit:cover}
+
+  .wrap{max-width:960px;margin:0 auto;padding:0 22px}
+  .narrow{max-width:520px;margin:0 auto;padding:0 22px}
+
+  /* === 統一タイポスケール（老眼配慮で全体的に大きく） ===
+     本文     = 16px（.fine / .fine-lg）
+     中項目   = 18px（.microlabel / .step__ttl / .subhead）      */
+  .fine{font-size:16px;line-height:2.05;letter-spacing:.04em;color:var(--body)}
+  .fine-c{text-align:center}
+  /* 色ブロック内の本文：同サイズ・濃いめの色で視認性UP */
+  .fine-lg{font-size:16px;line-height:2.05;letter-spacing:.04em;color:#3f463a}
+  .microlabel--lg{font-size:18px;letter-spacing:.1em;margin-bottom:18px}
+
+  /* 横幅いっぱいの中央ブロック（写真なし・テキストのみ） */
+  .fullblock{max-width:820px;margin:0 auto;padding:0 22px}
+  .fullblock .frame--pad{padding:clamp(34px,6vw,64px)}
+  .fullblock .frame--pad>div{max-width:640px;text-align:center}
+
+  /* チェックリスト（対象となる方） */
+  .checklist{list-style:none;margin:22px 0 0;padding:0;display:flex;flex-direction:column;gap:18px;text-align:left}
+  .checklist li{display:flex;align-items:flex-start;gap:14px}
+  .checklist .chk{flex:none;color:var(--accent);font-size:17px;line-height:2;font-weight:500}
+  .checklist b{font-weight:500;color:var(--ink)}
+
+  .display{
+    font-family:var(--serif-en);
+    font-weight:500;
+    font-size:clamp(30px,6vw,52px);
+    letter-spacing:.06em;
+    line-height:1.2;
+    text-align:center;
+    color:var(--ink);
+  }
+  .display--caps{text-transform:uppercase;letter-spacing:.1em;font-weight:500}
+
+  .subhead{
+    font-family:var(--serif-jp);font-weight:400;
+    font-size:18px;letter-spacing:.12em;line-height:1.9;text-align:center;color:var(--ink);
+  }
+  .microlabel{font-family:var(--serif-jp);font-weight:500;font-size:18px;letter-spacing:.1em;color:var(--ink);margin-bottom:16px;line-height:1.8}
+
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity 1.2s ease,transform 1.2s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  .topbar{display:flex;align-items:center;justify-content:space-between;padding:18px 22px}
+  .topbar__brand{font-family:var(--serif-en);font-weight:600;font-size:22px;letter-spacing:.14em;color:var(--ink)}
+  .topbar__tag{font-size:10px;letter-spacing:.18em;color:var(--body);text-transform:uppercase}
+
+  .hero{width:100%;height:56vh;min-height:340px;max-height:560px;overflow:hidden;
+    border-bottom-left-radius:var(--radius);border-bottom-right-radius:var(--radius)}
+  .hero__titleblock{padding:52px 22px 0;text-align:center}
+  .hero__title{font-family:var(--serif-jp);font-weight:500;font-size:clamp(26px,5.2vw,44px);
+    letter-spacing:.06em;line-height:1.4;color:var(--ink)}
+  .hero__sub{margin-top:26px}
+  .hero__lead{max-width:420px;margin:22px auto 0}
+
+  .band{padding:15vh 0}
+  .band--tight{padding:9vh 0}
+
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:6vw;align-items:center;max-width:1000px;margin:0 auto;padding:0 22px}
+  .split--rev .split__visual{order:2}
+  .split__text{max-width:300px}
+  .split__text.right{margin-left:auto}
+
+  .frame{border-radius:var(--radius);overflow:hidden;aspect-ratio:3/4}
+  .frame img{transition:transform 1.6s ease}
+  .frame:hover img{transform:scale(1.03)}
+  .block-blue{background:var(--blue)}
+  .block-blue2{background:var(--blue-2)}
+  .block-gray{background:var(--gray-blk)}
+  .frame--pad{display:flex;align-items:center;justify-content:center;padding:34px}
+  .frame--pad .fine{color:#5c6356}
+
+  .collection{text-align:center;padding:6vh 0 2vh}
+
+  /* ご協力の流れ（3ステップ） */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;max-width:900px;margin:0 auto;padding:0 22px}
+  .step{text-align:center}
+  .step__no{font-family:var(--serif-en);font-size:30px;color:var(--accent);letter-spacing:.04em;line-height:1}
+  .step__ttl{font-family:var(--serif-jp);font-weight:500;font-size:18px;letter-spacing:.08em;margin:14px 0 10px;color:var(--ink)}
+
+  .offer{padding:15vh 0;text-align:center}
+  .offer__badge{display:inline-block;font-family:var(--serif-jp);font-size:13px;letter-spacing:.14em;
+    color:var(--accent);border:1px solid var(--accent);border-radius:100px;padding:8px 22px;margin-bottom:26px}
+  .cta{display:inline-block;margin-top:34px;background:var(--ink);color:#fff;
+    font-family:var(--sans-jp);font-size:16px;letter-spacing:.14em;
+    padding:20px 56px;border-radius:100px;text-decoration:none;transition:opacity .4s,transform .3s}
+  .cta:hover{opacity:.82;transform:translateY(-2px)}
+  .cta__note{display:block;margin-top:14px}
+
+  footer{padding:9vh 0 12vh;text-align:center;border-top:1px solid var(--line)}
+  .footer__brand{font-family:var(--serif-en);font-weight:600;font-size:18px;letter-spacing:.14em}
+  .footer__links{margin:20px 0}
+  .footer__links a{color:var(--body);text-decoration:none;margin:0 13px;font-size:14px;letter-spacing:.08em}
+
+  @media(max-width:720px){
+    .split{grid-template-columns:1fr;gap:34px}
+    .split--rev .split__visual{order:0}
+    .split__text{max-width:100%;margin:0 auto;text-align:center}
+    .split__text.right{margin:0 auto}
+    .hero{height:48vh}
+    .steps{grid-template-columns:1fr;gap:40px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ========== ヘッダー ========== -->
+<div class="topbar">
+  <span class="topbar__brand">Recipe of Life</span>
+  <span class="topbar__tag">Research Project</span>
+</div>
+
+<!-- ========== ヒーロー ========== -->
+<header>
+  <div class="hero"><img src="images/hero.jpg" alt="食卓のイメージ"></div>
+  <div class="hero__titleblock reveal">
+    <h1 class="hero__title">会社の健康診断に<br>引っかかったあなたへ</h1>
+    <div class="hero__sub"><p class="subhead">リアルな声を聞かせてください。</p></div>
+    <p class="fine fine-c hero__lead">減塩や日々の食事管理について、皆さまが実際にどう感じ、どう工夫しているか。ありのままのお考えを聞かせてください。</p>
+  </div>
+</header>
+
+<!-- ========== コレクション01 ========== -->
+<section class="collection reveal">
+  <h2 class="display display--caps">About the Survey</h2>
+</section>
+
+<!-- S1：左テキスト／右 淡ブロック（食卓写真） -->
+<section class="band--tight">
+  <div class="split reveal">
+    <div class="split__text">
+      <p class="microlabel">調査の目的</p>
+      <p class="fine">日々の食事や健康との向き合い方は、人それぞれです。減塩や食事管理について、実際にどのように感じ、工夫されているか。多様な声を丁寧にうかがい、これからの食のあり方を考える手がかりとさせていただきます。</p>
+    </div>
+    <div class="split__visual frame block-blue"><img src="images/s1.jpg" alt="料理のイメージ"></div>
+  </div>
+</section>
+
+<!-- アンケート調査について（横幅いっぱい・中央・大きめ文字） -->
+<section class="band--tight">
+  <div class="fullblock reveal">
+    <div class="frame frame--pad block-blue2" style="aspect-ratio:auto">
+      <div><p class="microlabel microlabel--lg">アンケート調査について</p><p class="fine fine-lg">認知心理学の視点から、より良い食体験について研究をしています。良い点も難しい点も含め、皆さまの率直な実感を教えていただくことが、私たちの学びになります。正解や期待する答えはありません。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 対象となる方（チェックリスト・横幅いっぱい） -->
+<section class="band--tight">
+  <div class="fullblock reveal">
+    <div class="frame frame--pad block-gray" style="aspect-ratio:auto">
+      <div style="max-width:660px">
+        <p class="microlabel microlabel--lg">対象となる方（ご本人、またはご家族）</p>
+        <ul class="checklist">
+          <li><span class="chk">✓</span><span class="fine fine-lg"><b>健康診断の数値（血圧等）が気になるが、</b>美味しいものを楽しむ人生の喜びは絶対に諦めたくない方</span></li>
+          <li><span class="chk">✓</span><span class="fine fine-lg"><b>「減塩＝まずい・味気ない」という先入観があり、</b>正直まだ何も試せていない方（未行動の方も大歓迎です）</span></li>
+          <li><span class="chk">✓</span><span class="fine fine-lg"><b>薄味料理や減塩調味料に挑戦したものの、</b>物足りなくて結局長続きしなかった（挫折した）経験がある方</span></li>
+          <li><span class="chk">✓</span><span class="fine fine-lg"><b>ご家族のために減塩料理を作っているが、</b>「味がしない」と言われたり、勝手に醤油をかけられてストレスを感じている方</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== コレクション02＋流れ ========== -->
+<section class="collection reveal band--tight">
+  <h2 class="display display--caps">How It Works</h2>
+  <div class="narrow" style="margin-top:24px">
+    <p class="fine fine-c">回答内容は研究およびサービス開発の目的のみに使用し、第三者へ提供することはありません。セールス等のご連絡は一切ございません。</p>
+  </div>
+</section>
+
+<section class="band--tight reveal">
+  <div class="steps">
+    <div class="step">
+      <div class="step__no">01</div>
+      <p class="step__ttl">Webアンケート</p>
+      <p class="fine">普段の食事管理やお悩みについて、簡単な質問にご回答ください。所要時間 約2分（この段階での謝礼はございません）。</p>
+    </div>
+    <div class="step">
+      <div class="step__no">02</div>
+      <p class="step__ttl">オンライン取材</p>
+      <p class="fine">回答内容をもとに、事務局より15分程度のオンライン取材（Zoom等）をご相談します。ご協力は任意です。</p>
+    </div>
+    <div class="step">
+      <div class="step__no">03</div>
+      <p class="step__ttl">謝礼の進呈</p>
+      <p class="fine">オンライン取材にご協力いただいた方へ、Amazonギフトカード500円分を進呈いたします。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== OFFER / CTA ========== -->
+<section class="offer reveal" id="offer">
+  <div class="narrow">
+    <span class="offer__badge">所要時間 約2分・無料</span>
+    <h2 class="display" style="font-size:clamp(24px,4.4vw,36px)">あなたの声を、<br>聞かせてください。</h2>
+    <p class="fine fine-c" style="margin-top:18px">株式会社レシピオブライフによる食の体験に関する研究・開発プロジェクトです。</p>
+    <a class="cta" href="https://forms.gle/GhTu99tJRarAcKKv5" target="_blank" rel="noopener noreferrer">アンケートに回答する</a>
+    <span class="fine fine-c cta__note">Googleフォームが開きます（所要時間 約2分）<br>※謝礼は後日のオンライン取材（15分程度）にご協力いただいた方が対象です。アンケート回答のみの場合、謝礼はございません。</span>
+  </div>
+</section>
+
+<!-- ========== About us ========== -->
+<section class="collection reveal band--tight">
+  <h2 class="display display--caps">About Us</h2>
+  <div class="narrow" style="margin-top:30px">
+    <p class="fine fine-c">株式会社レシピオブライフは、「行動につながるおいしさをつくる」をミッションに掲げ、食体験設計を強みとするブランドプロデュース会社です。これまでに累計3,000レシピ、飲食ブランド50以上のプロデュースに携わっています。死ぬ間際までおいしく食べられる世の中を目指し、食の嗜好性に注目して商品やブランドの開発をおこなっております。</p>
+    <p class="fine fine-c" style="margin-top:22px">株式会社レシピオブライフ<br><a href="https://recipeoflife.jp/" target="_blank" rel="noopener noreferrer" style="color:var(--accent);text-decoration:none;letter-spacing:.08em">https://recipeoflife.jp/</a></p>
+  </div>
+</section>
+
+<!-- ========== フッター ========== -->
+<footer>
+  <div class="wrap">
+    <div class="footer__brand">Recipe of Life</div>
+    <div class="footer__links">
+      <a href="https://forms.gle/GhTu99tJRarAcKKv5" target="_blank" rel="noopener noreferrer">アンケートに回答する</a>
+      <a href="1786424694734_privacypolicy.pdf" target="_blank" rel="noopener noreferrer">プライバシーポリシー</a>
+      <a href="https://recipeoflife.jp/contact" target="_blank" rel="noopener noreferrer">お問い合わせ</a>
+    </div>
+    <p class="fine fine-c">主催：株式会社レシピオブライフ ｜ 食の体験に関する研究・開発プロジェクト</p>
+  </div>
+</footer>
+
+<script>
+  const io=new IntersectionObserver((es)=>{
+    es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}});
+  },{threshold:.14});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

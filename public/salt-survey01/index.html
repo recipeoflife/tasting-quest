@@ -71,7 +71,8 @@
   .fullblock .frame--pad>div{max-width:640px;text-align:center}
 
   /* チェックリスト（対象となる方） */
-  .checklist{list-style:none;margin:22px 0 0;padding:0;display:flex;flex-direction:column;gap:18px;text-align:left}
+  .grouphd{font-family:var(--serif-jp);font-weight:500;color:var(--accent);font-size:17px;letter-spacing:.08em;text-align:left;margin:30px 0 6px}
+  .checklist{list-style:none;margin:12px 0 0;padding:0;display:flex;flex-direction:column;gap:18px;text-align:left}
   .checklist li{display:flex;align-items:flex-start;gap:14px}
   .checklist .chk{flex:none;color:var(--accent);font-size:17px;line-height:2;font-weight:500}
   .checklist b{font-weight:500;color:var(--ink)}
@@ -204,13 +205,20 @@
 <section class="band--tight">
   <div class="fullblock reveal">
     <div class="frame frame--pad block-gray" style="aspect-ratio:auto">
-      <div style="max-width:660px">
-        <p class="microlabel microlabel--lg">対象となる方（ご本人、またはご家族）</p>
+      <div style="max-width:700px">
+        <p class="microlabel microlabel--lg">対象となる方</p>
+        <p class="fine fine-lg" style="text-align:center;margin-bottom:4px"><b>30代〜60代の男女、又はそのご家族で<br>健康や食生活に関心のある方</b></p>
+
+        <p class="grouphd">【ご本人の場合】</p>
         <ul class="checklist">
-          <li><span class="chk">✓</span><span class="fine fine-lg"><b>健康診断の数値（血圧等）が気になるが、</b>美味しいものを楽しむ人生の喜びは絶対に諦めたくない方</span></li>
-          <li><span class="chk">✓</span><span class="fine fine-lg"><b>「減塩＝まずい・味気ない」という先入観があり、</b>正直まだ何も試せていない方（未行動の方も大歓迎です）</span></li>
-          <li><span class="chk">✓</span><span class="fine fine-lg"><b>薄味料理や減塩調味料に挑戦したものの、</b>物足りなくて結局長続きしなかった（挫折した）経験がある方</span></li>
-          <li><span class="chk">✓</span><span class="fine fine-lg"><b>ご家族のために減塩料理を作っているが、</b>「味がしない」と言われたり、勝手に醤油をかけられてストレスを感じている方</span></li>
+          <li><span class="chk">✓</span><span class="fine fine-lg"><b>健診の数値（血圧・血糖値・コレステロール・体重等）が気になるが、</b>美味しい食事は諦めたくない方</span></li>
+          <li><span class="chk">✓</span><span class="fine fine-lg"><b>食事改善（減塩・糖質制限など）に挑戦したものの、</b>物足りなくて挫折した経験がある方</span></li>
+          <li><span class="chk">✓</span><span class="fine fine-lg"><b>「健康食＝不味い」というイメージがあり、</b>何から始めればいいか迷っている方（未行動の方も歓迎）</span></li>
+        </ul>
+
+        <p class="grouphd">【ご家族（パートナー等）の場合】</p>
+        <ul class="checklist">
+          <li><span class="chk">✓</span><span class="fine fine-lg"><b>ご家族の健康数値が気になり、</b>毎日の食事管理や工夫に少し難しさや気苦労を感じている方</span></li>
         </ul>
       </div>
     </div>
